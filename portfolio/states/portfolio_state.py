@@ -1,6 +1,8 @@
 import reflex as rx
 import asyncio
 from typing import TypedDict, List, Optional, Dict, Any
+from dotenv import load_dotenv
+import os
 
 
 class Project(TypedDict):
@@ -25,6 +27,8 @@ class ProcessedProject(TypedDict):
 
 
 class PortfolioState(rx.State):
+    load_dotenv()
+
     name: str = "Kent Vugs Nielsen"
     bio: str = (
         "Driven Data Scientist & AI Engineer specializing in building impactful machine learning solutions. Passionate about leveraging data to uncover insights and drive innovation. Let's connect!"
@@ -35,7 +39,7 @@ class PortfolioState(rx.State):
     )
     hard_skills: List[str] = [
         "Python (Pandas, NumPy, Scikit-learn, PyTorch)",
-        "Advanced SQL & NoSQL (TSQL, Pinecone, MongoDB)",
+        "Advanced SQL (TSQL, Pinecone, PostgreSQL)",
         "Machine Learning (XGBoost, KNN, Transformers, NLP)",
         "Deep Learning Frameworks (PyTorch)",
         "Data Visualization (Seaborn, Matplotlib, Power BI)",
@@ -60,104 +64,89 @@ class PortfolioState(rx.State):
     ]
     projects: List[Project] = [
         {
-            "title": "AI-Powered Predictive Maintenance System for Industrial Equipment",
-            "description": "Developed a sophisticated system using sensor data, time-series analysis, and Long Short-Term Memory (LSTM) networks to accurately predict equipment failures in a manufacturing setting. This proactive approach significantly reduced operational downtime by 25% and lowered maintenance costs by 15% through optimized scheduling and resource allocation.",
+            "title": "Portfolio Website - 2020",
+            "description": "My first portfolio website, showcasing my projects and skills. It was built using React and JavaScript, and served as a foundation for my web development journey.",
             "technologies": [
-                "Python",
-                "TensorFlow/Keras",
-                "Pandas",
-                "NumPy",
-                "Scikit-learn",
-                "AWS SageMaker",
-                "Grafana",
-                "SQL",
+                "CSS",
+                "HTML",
+                "React",
+                "JavaScript",
             ],
-            "image_url": "/project.png",
-            "repo_url": "https://github.com/yourusername/predictive-maintenance",
+            "image_url": "/old_portfolio_2.png",
+            "repo_url": "https://github.com/kent1325/portfolio-2020",
             "live_url": None,
         },
         {
-            "title": "Customer Churn Prediction Model with Explainable AI",
-            "description": "Built and deployed a high-performance classification model (XGBoost) for a telecom company, identifying at-risk customers with 85% accuracy. Integrated SHAP (SHapley Additive exPlanations) to provide actionable insights into churn drivers, enabling targeted retention campaigns and personalized customer engagement strategies.",
+            "title": "Wind Turbine Condition Monitoring and AEP Loss Estimation",
+            "description": "A project in collaboration with Vestas, focusing on condition monitoring of wind turbines and estimating Annual Energy Production (AEP) losses. The project involved analyzing sensor data to predict turbine failures and optimize maintenance schedules.",
             "technologies": [
                 "Python",
                 "Scikit-learn",
                 "XGBoost",
-                "SHAP",
-                "Flask",
-                "Docker",
-                "Plotly Dash",
+                "Pytorch",
+                "Git",
+                "Matplotlib",
+                "Seaborn",
+                "Pandas",
+                "NumPy",
+                "Scipy",
             ],
-            "image_url": "/project_placeholder.png",
-            "repo_url": "https://github.com/yourusername/customer-churn-model",
-            "live_url": "https://churn-dashboard.example.com",
-        },
-        {
-            "title": "Natural Language Search Engine for Legal Documents",
-            "description": "Implemented an advanced semantic search engine using Transformer models (BERT variants) and vector databases (FAISS) for a large corpus of legal documents. This system improved information retrieval speed and relevance by over 5x compared to traditional keyword-based search, significantly enhancing paralegal and attorney productivity.",
-            "technologies": [
-                "Python",
-                "Hugging Face Transformers",
-                "PyTorch",
-                "FAISS",
-                "Elasticsearch",
-                "FastAPI",
-                "React",
-            ],
-            "image_url": "/project_placeholder.png",
-            "repo_url": "https://github.com/yourusername/semantic-doc-search",
+            "image_url": "/wind_turbine.jpg",
+            "repo_url": "https://github.com/kent1325/WindTurbineConditionMonitoring",
             "live_url": None,
         },
         {
-            "title": "Real-time Anomaly Detection in Financial Transactions",
-            "description": "Designed and deployed a scalable streaming data pipeline using Apache Kafka and Spark Streaming for real-time anomaly detection in high-volume financial transactions. The system identifies fraudulent patterns and outliers with low latency, preventing significant financial losses.",
-            "technologies": [
-                "Python",
-                "Scala",
-                "Apache Spark",
-                "Kafka",
-                "Cassandra",
-                "Prometheus",
-                "Grafana",
-            ],
-            "image_url": "/project_placeholder.png",
-            "repo_url": "https://github.com/yourusername/anomaly-detection",
-            "live_url": None,
-        },
-        {
-            "title": "Computer Vision for Automated Quality Control in Manufacturing",
-            "description": "Developed a Convolutional Neural Network (CNN) based model to automatically detect microscopic defects in manufactured electronic components. The system achieved 99.2% accuracy, outperforming human inspectors and improving production line efficiency and product quality.",
+            "title": "2D Brain Age Estimation & AD classification using Deep Learning",
+            "description": "A project focused on estimating brain age and classifying Alzheimer's Disease (AD) using deep learning techniques. The project utilized 2D MRI images and implemented transfer learning with convolutional neural networks to achieve high accuracy in age estimation and AD classification.",
             "technologies": [
                 "Python",
                 "PyTorch",
-                "OpenCV",
-                "TensorRT (for deployment)",
-                "AWS Rekognition (for PoC)",
-                "FastAPI",
-                "Docker",
+                "Transformers",
+                "Convolutional Neural Networks",
+                "Transfer Learning",
+                "Shell Scripting",
+                "Pandas",
+                "NumPy",
+                "Matplotlib",
+                "Seaborn",
             ],
-            "image_url": "/project_placeholder.png",
-            "repo_url": "https://github.com/yourusername/cv-quality-control",
-            "live_url": "https://qc-demo.example.com",
+            "image_url": "/brain_mri.png",
+            "repo_url": "https://github.com/kent1325/2D-Brain-age-estimation_AD-classification_using_DL",
+            "live_url": None,
         },
         {
-            "title": "Personalized Recommendation Engine for E-commerce Platform",
-            "description": "Created a hybrid recommendation system (collaborative filtering and content-based) for a large e-commerce platform. This engine increased user engagement metrics by 18% and average order value by 12% through tailored product suggestions.",
+            "title": "Bayesian Change Point Detection for Retail Sales",
+            "description": "This project was in collaboration with Maki, a retail company, where I implemented Bayesian Change Point Detection to analyze sales data. The goal was to identify significant changes in sales patterns over time, enabling better inventory management and sales forecasting.",
             "technologies": [
                 "Python",
-                "SurpriseLib",
-                "Spark MLlib",
-                "LightFM",
-                "Redis",
-                "Airflow",
-                "AWS Personalize",
+                "Matplotlib",
+                "NumPy",
+                "Pandas",
+                "Scipy",
+                "Prophet",
+            ],
+            "image_url": "/changepoint.png",
+            "repo_url": "https://github.com/kent1325/Bayesian-Change-Point-Detection-for-Retail-Sales",
+            "live_url": None,
+        },
+        {
+            "title": "Explainable AI in Graph Neural Networks",
+            "description": "A project focused on enhancing the interpretability of Graph Neural Networks (GNNs) using explainable AI techniques. The project involved developing methods to visualize and understand the decision-making process of GNNs, making them more transparent and trustworthy.",
+            "technologies": [
+                "Python",
+                "PyTorch",
+                "Graph Neural Networks",
+                "Class Activation Maps",
+                "MLFlow",
+                "Numpy",
+                "MUTAG",
             ],
             "image_url": "/project_placeholder.png",
-            "repo_url": "https://github.com/yourusername/recommendation-engine",
+            "repo_url": "https://github.com/kent1325/ExplainableAI-in-GNNs",
             "live_url": None,
         },
     ]
-    contact_email_address: str = "k.vugs@pm.me"
+    contact_email_address: str = os.getenv("EMAIL", "")
     linkedin_url: str = "https://linkedin.com/in/vugs"
     github_url: str = "https://github.com/kent1325"
     titles: list[str] = [
