@@ -3,6 +3,8 @@ import asyncio
 from typing import TypedDict, List, Optional, Dict, Any
 from dotenv import load_dotenv
 import os
+import smtplib
+from email.mime.text import MIMEText
 
 
 class Project(TypedDict):
@@ -146,7 +148,7 @@ class PortfolioState(rx.State):
             "live_url": None,
         },
     ]
-    contact_email_address: str = os.getenv("EMAIL", "")
+    contact_email_address: str = os.getenv("GMAIL", "")
     linkedin_url: str = "https://linkedin.com/in/vugs"
     github_url: str = "https://github.com/kent1325"
     titles: list[str] = [
@@ -205,6 +207,22 @@ class PortfolioState(rx.State):
             self.contact_errors["message"] = (
                 f"Message is too long (max {self.MAX_CONTACT_MESSAGE_LENGTH} characters)."
             )
+
+        print(self.contact_email_address)
+
+        body = f"Name: {self.contact_name}\nEmail: {self.contact_email}\n\nMessage:\n{self.contact_message}"
+        msg = MIMEText(body)
+        msg["Subject"] = "New Contact Form Message | Portfolio"
+        msg["From"] = self.contact_email
+        msg["To"] = self.contact_email_address
+
+        try:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+                server.login(self.contact_email_address, os.getenv("APP_PASSWORD", ""))
+                server.send_message(msg)
+        except Exception as e:
+            self.contact_errors["message"] = "Failed to send email"
+
         if self.contact_errors:
             self.is_contact_submitting = False
             error_messages = ". ".join(self.contact_errors.values())
@@ -219,14 +237,11 @@ class PortfolioState(rx.State):
         self.contact_email = ""
         self.contact_message = ""
         self.is_contact_submitting = False
-        yield rx.toast.info(
-            "Functionality is not implemented yet!",
+
+        yield rx.toast.success(
+            "Message sent successfully! I'll get back to you soon.",
             duration=5000,
         )
-        # yield rx.toast.success(
-        #     "Message sent successfully! I'll get back to you soon.",
-        #     duration=5000,
-        # )
 
     @rx.event
     def cycle_projects(self, direction: int):
