@@ -1,56 +1,24 @@
 from nicegui import ui
-import config
-
-
-def create_header():
-    """Creates the navigation header"""
-    with (
-        ui.header()
-        .classes("items-center justify-between")
-        .style(f"background-color:{config.PRIMARY_COLOR}")
-    ):
-        ui.label(config.SITE_TITLE).classes("text-h5")
-        with ui.row():
-            ui.link("Home", "#home")
-            ui.link("About", "#about")
-            ui.link("Projects", "#projects")
-            ui.link("Contact", "#contact")
-
-
-def create_footer():
-    """Creates the footer section"""
-    with (
-        ui.footer()
-        .classes("justify-center")
-        .style(f"background-color: {config.PRIMARY_COLOR}")
-    ):
-        ui.label(f"© {config.COPYRIGHT_YEAR}. All rights reserved.")
+import portfolio.config as config
+import portfolio.theme as theme
 
 
 @ui.page("/")
-def main_page():
-    # Add custom CSS for sustainable green gradient background
-    ui.add_head_html("""
-        <style>
-            body {
-                background: linear-gradient(135deg, #2d5016 0%, #3d7b2f 25%, #5ca963 50%, #3d7b2f 75%, #2d5016 100%);
-                background-attachment: fixed;
-                background-size: 400% 400%;
-                animation: gradientShift 15s ease infinite;
-                min-height: 100vh;
-            }
-            
-            @keyframes gradientShift {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
-        </style>
-    """)
+async def main():
+    with theme.frame():
+        # Your page content goes here - it will be inserted where the yield is
+        ui.label("Welcome to my portfolio").classes("text-4xl font-bold")
+        ui.label("This is where your content goes").classes("text-xl mt-4")
 
-    create_header()
-    # HERO Section here
-    create_footer()
+        ui.label("Welcome - Merriweather (default)").classes("text-4xl font-bold")
+        ui.label("Welcome - Crimson Pro").classes("text-4xl font-bold font-crimson")
+        ui.label("Welcome - Lora").classes("text-4xl font-bold font-lora")
+        ui.label("Welcome - Quattrocento").classes(
+            "text-4xl font-bold font-quattrocento"
+        )
+        ui.label("Welcome - Bitter").classes("text-4xl font-bold font-bitter")
+        ui.label("Welcome - Inter (sans)").classes("text-4xl font-bold font-inter")
+        ui.label("Welcome - DM Sans").classes("text-4xl font-bold font-dmsans")
 
 
 if __name__ in {"__main__", "__mp_main__"}:
