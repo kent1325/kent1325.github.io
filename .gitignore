@@ -1,17 +1,56 @@
+# macOS / editor noise
+.DS_Store
+.AppleDouble
+.LSOverride
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local agent/tool state
 .web
 .states
-*.py[cod]
-*.db
-assets/external/
-# Python-generated files
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python caches / build output
 __pycache__/
-*.py[oc]
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyre/
+.coverage
+.coverage.*
+htmlcov/
 build/
 dist/
 wheels/
-*.egg-info
+*.egg-info/
 
 # Virtual environments
-.venv
+.venv/
+venv/
+env/
 
-.env
+# Node / Tailwind
+node_modules/
+.npm/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local databases / generated content
+*.db
+*.sqlite
+*.sqlite3
+
+# Project-specific ignored assets
+assets/external/
