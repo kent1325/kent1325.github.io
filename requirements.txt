@@ -1,4 +1,0 @@
-reflex==0.7.8a1
-typing-extensions
-js2py
-python-dotenv
