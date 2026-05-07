@@ -25,7 +25,7 @@ The site has no backend, database, CMS, server-side rendering runtime, FastAPI a
 - Validate source content strictly before writing output.
 - Use root-relative internal URLs and pretty directory-style page URLs.
 - Generate deployment artifacts in CI; do not commit `dist/`.
-- Pin major/minor GitHub Actions runtime versions, such as Python `3.12` and Node `20`.
+- Pin GitHub Actions runtime versions, using Python `3.14` and Node `v25.9.0`.
 - Commit `uv.lock` and `package-lock.json`; CI uses locked dependency installation and fails on missing or stale lockfiles.
 - Use GitHub Pages user-site hosting at domain root in v1.
 - Do not implement custom-domain/CNAME behavior in v1.
@@ -40,7 +40,7 @@ The site has no backend, database, CMS, server-side rendering runtime, FastAPI a
 ## Architecture Quality Principles
 
 - **Maintainability**: model papers, books, certificates, and events as first-class content types because their domain rules differ; use Pydantic for centralized strict validation; keep compiler orchestration separate from content schemas, route inventory, asset validation, Markdown rendering, and templates.
-- **Reliability**: validate before writing output; perform full clean builds; disable or escape raw Markdown HTML; gate deployment on the complete check/build; use committed lockfiles, pinned major/minor runtimes, and smoke checks for generated HTML/CSS.
+- **Reliability**: validate before writing output; perform full clean builds; disable or escape raw Markdown HTML; gate deployment on the complete check/build; use committed lockfiles, pinned Python and Node runtimes, and smoke checks for generated HTML/CSS.
 - **Scalability**: avoid v1 search, pagination, tag pages, caching, and incremental builds; the expected static output is small enough for full regeneration, while route/content boundaries remain ready for later pagination or archive pages.
 - **Adaptability**: use root-relative URLs, pretty paths, source-based Tailwind scanning, shared base card styles, section partial templates, and scroll-based homepage composition so later navigation, archive pages, custom domains, or UX changes remain localized.
 

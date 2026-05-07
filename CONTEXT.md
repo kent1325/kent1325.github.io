@@ -159,7 +159,7 @@ _Avoid_: Modified date, edited date, last touched date
 - The **Site Compiler** validates **Source Content** before producing the deployable form of the **Portfolio Website**.
 - The **Site Compiler** is part of the portfolio's technical signal for readers who inspect the repository, not merely hidden build plumbing.
 - Deployment of the **Portfolio Website** is gated on the full strict validation/build check passing, including smoke checks for required generated HTML and CSS files.
-- CI uses pinned major/minor Python and Node runtime versions to reduce workflow drift.
+- CI uses pinned Python `3.14` and Node `v25.9.0` runtime versions to reduce workflow drift.
 - CI uses committed Python and npm lockfiles for reproducible dependency installation.
 - npm is used rather than pnpm in v1 because Node tooling is limited to Tailwind CSS compilation and minimal local setup is preferred.
 - Local development uses `just` as the canonical command interface over raw `uv` and npm commands.

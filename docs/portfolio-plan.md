@@ -85,7 +85,7 @@ Reasoning:
 ## Architecture Quality Principles
 
 - **Maintainability**: keep first-class content types for domain-specific rules, use Pydantic for centralized validation, split compiler responsibilities by content, routes, rendering, assets, and orchestration, and compose homepage sections from partial templates.
-- **Reliability**: validate all source content, links, assets, and key generated artifacts before deployment; gate deployment on the full check; use lockfiles and pinned major/minor runtimes in CI; perform full clean builds without caches.
+- **Reliability**: validate all source content, links, assets, and key generated artifacts before deployment; gate deployment on the full check; use lockfiles and pinned Python and Node runtimes in CI; perform full clean builds without caches.
 - **Scalability**: generate static pages with simple routing; defer search, pagination, and tag pages until real content volume requires them.
 - **Adaptability**: use root-relative internal URLs, source-based Tailwind scanning, shared card styles with small content-specific variations, and clear module boundaries so later archive pages, pagination, navigation, or custom domains can be added without reshaping v1.
 
@@ -146,6 +146,8 @@ dist/
     check.yml
     deploy.yml
 
+.python-version
+.node-version
 pyproject.toml
 uv.lock
 package.json

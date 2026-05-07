@@ -314,7 +314,7 @@ Copy the full `assets/` directory to `dist/assets/`, including unreferenced file
 
 ## CI/CD for v1
 
-Include two GitHub Actions workflows. Pin major/minor runtime versions, such as Python `3.12` and Node `20`, to reduce CI drift without requiring exact patch pinning in v1.
+Include two GitHub Actions workflows. Pin runtime versions to Python `3.14` and Node `v25.9.0` to reduce CI drift.
 
 ### Check workflow
 
@@ -367,6 +367,8 @@ Commit:
 - templates
 - content
 - assets
+- `.python-version`
+- `.node-version`
 - `pyproject.toml`
 - `uv.lock`
 - `package.json`
