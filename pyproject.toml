@@ -1,7 +1,29 @@
 [project]
 name = "portfolio"
 version = "0.1.0"
-description = "Add your description here"
+description = "Static portfolio site compiler"
 readme = "README.md"
-requires-python = ">=3.14,<3.15"
-dependencies = []
+requires-python = ">=3.14"
+dependencies = [
+    "pyyaml",
+    "jinja2",
+    "markdown",
+    "pydantic",
+]
+
+[dependecy-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

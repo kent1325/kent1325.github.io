@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ profile.name }}</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+
+<body>
+    <main>
+        <section>
+            <img src="{{ profile.avatar }}" alt="avatar">
+            <h1>{{ profile.name }}</h1>
+            <p>{{ profile.hero_lines[0] }}</p>
+            <ul>
+                {% for line in profile.hero_lines %}
+                <li>{{ line }}</li>
+                {% endfor %}
+            </ul>
+
+            <p>
+                <a href="{{ profile.links.linkedin }}">LinkedIn</a>
+                <a href="{{ profile.links.github }}">GitHub</a>
+            </p>
+            <p>
+                <a href="/blog/">Read the blog</a>
+            </p>
+        </section>
+    </main>    
+</body>
+</html>
