@@ -112,7 +112,7 @@ Fixed relative order, with empty content sections hidden:
 - Ruff formatting/linting
 - pytest fixture-based compiler/content behavior tests
 - No mypy/pyright static type checker in v1
-- GitHub Actions check workflow with pinned Python `3.14` and Node `v25.9.0` versions
+- GitHub Actions check workflow with pinned Python `3.14` and Node `v26.0.0` versions
 - GitHub Actions deploy workflow gated on the full strict validation/build check
 - Strict build/content validation, including raw Markdown HTML disabled or escaped
 - Clean build behavior: validate first, then remove/write `dist/`

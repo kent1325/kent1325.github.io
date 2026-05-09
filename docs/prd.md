@@ -25,7 +25,7 @@ The site has no backend, database, CMS, server-side rendering runtime, FastAPI a
 - Validate source content strictly before writing output.
 - Use root-relative internal URLs and pretty directory-style page URLs.
 - Generate deployment artifacts in CI; do not commit `dist/`.
-- Pin GitHub Actions runtime versions, using Python `3.14` and Node `v25.9.0`.
+- Pin GitHub Actions runtime versions, using Python `3.14` and Node `v26.0.0`.
 - Commit `uv.lock` and `package-lock.json`; CI uses locked dependency installation and fails on missing or stale lockfiles.
 - Use GitHub Pages user-site hosting at domain root in v1.
 - Do not implement custom-domain/CNAME behavior in v1.
