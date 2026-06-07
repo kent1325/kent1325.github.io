@@ -51,11 +51,8 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
-      - name: Build site
-        run: just build
-
-      - name: Smoke check deploy artifact
-        run: just smoke
+      - name: Run checks and build site
+        run: just check
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v6
