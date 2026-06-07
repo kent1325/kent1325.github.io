@@ -12,6 +12,11 @@ test:
     PYTHONPATH=src uv run pytest
 
 build:
-    PYTHONPATH=src uv run python -m portfolio.build
+    PYTHONPATH=src uv run python -m portfolio.build && npm run css
 
-check: format-check lint test build
+smoke:
+    test -f dist/index.html
+    test -f dist/blog/index.html
+    test -f dist/assets/styles.css
+
+check: format-check lint test build smoke
